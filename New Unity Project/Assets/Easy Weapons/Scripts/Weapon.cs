@@ -554,8 +554,11 @@ public class Weapon : MonoBehaviour
 		// Ammo Display
 		if (showCurrentAmmo)
 		{
+			GUIStyle style = new GUIStyle();
+			style.fontSize = 64;
+			style.normal.textColor = Color.white;
 			if (type == WeaponType.Raycast || type == WeaponType.Projectile)
-				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Ammo: " + currentAmmo);
+				GUI.Label(new Rect(10, Screen.height - 120, 100, 20), "Ammo: " + currentAmmo, style);
 			else if (type == WeaponType.Beam)
 				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Heat: " + (int)(beamHeat * 100) + "/" + (int)(maxBeamHeat * 100));
 		}
