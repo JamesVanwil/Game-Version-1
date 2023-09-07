@@ -292,13 +292,13 @@ public class Weapon : MonoBehaviour
 		fireTimer += Time.deltaTime;
 
 		// CheckForUserInput() handles the firing based on user input
-		if (playerWeapon)
+		if (playerWeapon && !PauseMenu.GameIsPaused)
 		{
 			CheckForUserInput();
 		}
 
 		// Reload if the weapon is out of ammo
-		if (reloadAutomatically && currentAmmo <= 0)
+		if (reloadAutomatically && currentAmmo <= 0 && !PauseMenu.GameIsPaused)
 			Reload();
 
 		// Recoil Recovery
@@ -322,7 +322,7 @@ public class Weapon : MonoBehaviour
 	{
 
 		// Fire if this is a raycast type weapon and the user presses the fire button
-		if (type == WeaponType.Raycast)
+		if (type == WeaponType.Raycast && !PauseMenu.GameIsPaused)
 		{
 			if (fireTimer >= actualROF && burstCounter < burstRate && canFire)
 			{
@@ -351,7 +351,7 @@ public class Weapon : MonoBehaviour
 			}
 		}
 		// Launch a projectile if this is a projectile type weapon and the user presses the fire button
-		if (type == WeaponType.Projectile)
+		if (type == WeaponType.Projectile && !PauseMenu.GameIsPaused)
 		{
 			if (fireTimer >= actualROF && burstCounter < burstRate && canFire)
 			{
@@ -413,7 +413,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Reload if the "Reload" button is pressed
-		if (Input.GetButtonDown("Reload"))
+		if (Input.GetButtonDown("Reload") && !PauseMenu.GameIsPaused)
 			Reload();
 
 		// If the weapon is semi-auto and the user lets up on the button, set canFire to true
@@ -552,7 +552,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Ammo Display
-		if (showCurrentAmmo)
+		if (showCurrentAmmo && !PauseMenu.GameIsPaused)
 		{
 			GUIStyle style = new GUIStyle();
 			style.fontSize = 64;
