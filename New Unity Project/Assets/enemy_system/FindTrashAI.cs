@@ -12,7 +12,8 @@ public class FindTrashAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        navmeh.enabled = true;
+        Debug.Log(navmeh.enabled);
     }
 
     // Update is called once per frame
