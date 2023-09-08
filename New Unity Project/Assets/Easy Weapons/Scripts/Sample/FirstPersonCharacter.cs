@@ -32,7 +32,7 @@ public class FirstPersonCharacter : MonoBehaviour
 		grounded = true;
 		rayHitComparer = new RayHitComparer();
 
-		if (lockCursor && !PauseMenu.GameIsPaused)
+		if (lockCursor)
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
@@ -52,7 +52,7 @@ public class FirstPersonCharacter : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetMouseButtonUp(0) && !PauseMenu.GameIsPaused)
+		if (Input.GetMouseButtonUp(0))
 		{
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;

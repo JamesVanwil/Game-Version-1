@@ -292,13 +292,13 @@ public class Weapon : MonoBehaviour
 		fireTimer += Time.deltaTime;
 
 		// CheckForUserInput() handles the firing based on user input
-		if (playerWeapon && !PauseMenu.GameIsPaused)
+		if (playerWeapon)
 		{
 			CheckForUserInput();
 		}
 
 		// Reload if the weapon is out of ammo
-		if (reloadAutomatically && currentAmmo <= 0 && !PauseMenu.GameIsPaused)
+		if (reloadAutomatically && currentAmmo <= 0)
 			Reload();
 
 		// Recoil Recovery
@@ -322,7 +322,7 @@ public class Weapon : MonoBehaviour
 	{
 
 		// Fire if this is a raycast type weapon and the user presses the fire button
-		if (type == WeaponType.Raycast && !PauseMenu.GameIsPaused)
+		if (type == WeaponType.Raycast)
 		{
 			if (fireTimer >= actualROF && burstCounter < burstRate && canFire)
 			{
@@ -351,7 +351,7 @@ public class Weapon : MonoBehaviour
 			}
 		}
 		// Launch a projectile if this is a projectile type weapon and the user presses the fire button
-		if (type == WeaponType.Projectile && !PauseMenu.GameIsPaused)
+		if (type == WeaponType.Projectile)
 		{
 			if (fireTimer >= actualROF && burstCounter < burstRate && canFire)
 			{
@@ -413,7 +413,7 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Reload if the "Reload" button is pressed
-		if (Input.GetButtonDown("Reload") && !PauseMenu.GameIsPaused)
+		if (Input.GetButtonDown("Reload"))
 			Reload();
 
 		// If the weapon is semi-auto and the user lets up on the button, set canFire to true
@@ -552,13 +552,10 @@ public class Weapon : MonoBehaviour
 		}
 
 		// Ammo Display
-		if (showCurrentAmmo && !PauseMenu.GameIsPaused)
+		if (showCurrentAmmo)
 		{
-			GUIStyle style = new GUIStyle();
-			style.fontSize = 64;
-			style.normal.textColor = Color.white;
 			if (type == WeaponType.Raycast || type == WeaponType.Projectile)
-				GUI.Label(new Rect(10, Screen.height - 120, 100, 20), "Ammo: " + currentAmmo, style);
+				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Ammo: " + currentAmmo);
 			else if (type == WeaponType.Beam)
 				GUI.Label(new Rect(10, Screen.height - 30, 100, 20), "Heat: " + (int)(beamHeat * 100) + "/" + (int)(maxBeamHeat * 100));
 		}
