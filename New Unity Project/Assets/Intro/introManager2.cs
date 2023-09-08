@@ -23,6 +23,7 @@ public class introManager2 : MonoBehaviour
         }
         if (rectTransform2.anchoredPosition.y == 792 && Input.anyKeyDown)
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             comic2.gameObject.SetActive(false);
         }
     }
